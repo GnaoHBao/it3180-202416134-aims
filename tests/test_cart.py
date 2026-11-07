@@ -20,5 +20,18 @@ class TestCart(unittest.TestCase):
             self.assertTrue(self.cart.add_dvd(self.dvd1))
         self.assertFalse(self.cart.add_dvd(self.dvd1))
 
+    def test_search_by_title(self):
+        self.cart.add_dvd(self.dvd1)
+        self.cart.add_dvd(self.dvd2)
+        results = self.cart.search_by_title("Lion")
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].title, "The Lion King")
+
+    def test_print_cart(self):
+        self.cart.add_dvd(self.dvd1)
+        output = self.cart.print_cart()
+        self.assertIn("The Lion King", output)
+        self.assertIn("Total cost", output)
+
 if __name__ == "__main__":
     unittest.main()
