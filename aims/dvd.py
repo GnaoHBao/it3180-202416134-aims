@@ -7,7 +7,8 @@ class DigitalVideoDisc:
         self.cost = float(cost)
 
     def is_match(self, keyword: str) -> bool:
-        return keyword in self.title
+        # Sửa lỗi: không phân biệt hoa thường
+        return keyword.lower() in self.title.lower()
 
     def __str__(self) -> str:
         return f"DVD - {self.title} - {self.category} - {self.director} - {self.length} mins: {self.cost:.2f} $"
