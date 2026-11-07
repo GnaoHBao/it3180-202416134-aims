@@ -8,7 +8,9 @@ class Cart:
         self.items: List[DigitalVideoDisc] = []
 
     def add_dvd(self, dvd: DigitalVideoDisc) -> bool:
+        # [Feature B]: Đưa ra cảnh báo dung lượng giỏ trước khi từ chối
         if len(self.items) >= self.MAX_NUMBERS_ORDERED:
+            print("WARNING: Order limit reached (max 20 DVDs).")
             return False
         self.items.append(dvd)
         return True
