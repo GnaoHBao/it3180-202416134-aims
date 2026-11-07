@@ -8,7 +8,6 @@ class Cart:
         self.items: List[DigitalVideoDisc] = []
 
     def add_dvd(self, dvd: DigitalVideoDisc) -> bool:
-        # Đã giải quyết xung đột giữa bugfix và feature:
         if len(self.items) >= self.MAX_NUMBERS_ORDERED:
             print("WARNING: Cart is full (max 20 DVDs)! Cannot add more items.")
             return False
@@ -36,3 +35,7 @@ class Cart:
 
     def search_by_title(self, keyword: str) -> List[DigitalVideoDisc]:
         return [item for item in self.items if item.is_match(keyword)]
+
+    def sort_by_cost(self, descending: bool = True):
+        """Tính năng mới trên master: sắp xếp theo giá."""
+        self.items.sort(key=lambda x: x.cost, reverse=descending)
