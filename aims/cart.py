@@ -8,9 +8,9 @@ class Cart:
         self.items: List[DigitalVideoDisc] = []
 
     def add_dvd(self, dvd: DigitalVideoDisc) -> bool:
-        # [Fix A]: Chặn nghiêm ngặt khi giỏ đạt đủ 20 đĩa
+        # Đã giải quyết xung đột giữa bugfix và feature:
         if len(self.items) >= self.MAX_NUMBERS_ORDERED:
-            print("Cart is full! Cannot add more items.")
+            print("WARNING: Cart is full (max 20 DVDs)! Cannot add more items.")
             return False
         self.items.append(dvd)
         return True
